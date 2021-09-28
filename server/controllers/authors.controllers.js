@@ -18,4 +18,32 @@ const findSingleAuthor = (req, res) =>{
       })
 };
 
-module.exports = {findAuthors,findSingleAuthor};
+const createAuthor = (req,res) =>{
+  console.log(req.body)
+  Author.create(req.body)
+      .then(results => res.json({data:results}))
+      .catch(error=>{
+        res.json({error:error, message:'No se pudo crear un autor'})
+        res.sendStatus(500);
+      })
+}
+
+const updateAuthor = (req,res) =>{
+  Author.findOneAndUpdate({_id:req.params.id}, req.body, {new:true})
+      .then(results => res.json({data:results}))
+      .catch(error=>{
+        res.json({error:error, message:'No se pudo actualizar un autor'})
+        res.sendStatus(500);
+      })
+}
+
+const deleteAuthor =(req,res) =>{
+  Author.deleteOne({_id:req.params.id})
+      .then(results => res.json({data:results}))
+      .catch(error=>{
+        res.json({error:error, message:'No se pudo eliminar el autor'})
+        res.sendStatus(202);
+      }) 
+}
+
+module.exports = {findAuthors,findSingleAuthor,createAuthor, updateAuthor, deleteAuthor};
