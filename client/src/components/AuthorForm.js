@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { Button, Card, CardBody, CardHeader, Form, FormGroup, Input, Label,Row,Col } from 'reactstrap';
-import {Link,useHistory,useParams} from 'react-router-dom';
+import {useHistory,useParams} from 'react-router-dom';
 import axios from 'axios';
 
-export default function AuthorForm({create,update}) {
+export default function AuthorForm({create,update,datos,setDatos}) {
   const history = useHistory();
   const {id} = useParams();
 
@@ -27,7 +27,8 @@ export default function AuthorForm({create,update}) {
     axios.post('api/authors/create',input)
          .then(res=>{
            if(res.data.data){
-             console.log(res.data.data)
+             setDatos(datos.concat([res.data.data]));
+             homePage();
            }else{
              alert(res.data.error.message)
            }
@@ -44,7 +45,12 @@ export default function AuthorForm({create,update}) {
 
   const updateAuthor=()=>{
     axios.put(`/api/authors/update/${id}`,input)
-        .then(res => console.log(res))
+        .then(res => {
+          const index = datos.findIndex(result => result._id === id)    //encontrar indice del objeto
+          datos.splice(index,1,input);
+          setDatos(datos);
+          homePage();
+        })
   }
 
   const handleOnSubmit =e=>{
@@ -88,7 +94,7 @@ export default function AuthorForm({create,update}) {
                        
                       </Col>
                       <Col md={6}>
-                        <Button size="lg" color="danger" style={{float:'left'}}>Eliminar</Button>{' '}
+                        <Button size="lg" color="danger" onClick={homePage} style={{float:'left'}}>Cancelar</Button>{' '}
                       </Col>
                     </Row>
                 </Form>

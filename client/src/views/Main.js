@@ -5,9 +5,19 @@ import {Row,Col,Table,Button} from 'reactstrap';
 import { BsFillTrashFill } from "react-icons/bs";
 import { BiPencil } from "react-icons/bi";
 import {Link} from "react-router-dom";
+import axios from 'axios';
 
 
-export default function Main({list}) {
+export default function Main({list,setList}) {
+
+
+  const deleteAuthor = id =>{
+    axios.delete(`/api/authors/delete/${id}`)
+        .then(res=>{
+          const newAuthorsList = list.filter((actualAuthor) => actualAuthor._id !== id)
+          setList(newAuthorsList);
+        })
+  }
 
   return (
     <div>
@@ -33,7 +43,10 @@ export default function Main({list}) {
                                 </Link>  
                               </Col>
                               <Col md={6}>
-                                  <BsFillTrashFill/>
+                                  <BsFillTrashFill 
+                                      style={{cursor:'pointer', color:'red'}}
+                                      onClick={e => deleteAuthor(items._id)}
+                                  />
                               </Col>
                             </Row>
                         </td>
