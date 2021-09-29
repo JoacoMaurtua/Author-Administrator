@@ -7,7 +7,7 @@ export default function AuthorForm({create,update,datos,setDatos}) {
   const history = useHistory();
   const {id} = useParams();
 
-  const homePage =e=>{
+  const homePage =(e)=>{
     history.push('/');
   }
 
@@ -23,12 +23,12 @@ export default function AuthorForm({create,update,datos,setDatos}) {
     })
   };
 
-  const addAuthors=()=>{
+  const addAuthors=(e)=>{
     axios.post('api/authors/create',input)
          .then(res=>{
            if(res.data.data){
              setDatos(datos.concat([res.data.data]));
-             homePage();
+             homePage(e);
            }else{
              alert(res.data.error.message)
            }
@@ -59,13 +59,13 @@ export default function AuthorForm({create,update,datos,setDatos}) {
       updateAuthor()
     }
     else{
-      addAuthors()
+      addAuthors(e)
     }
   }
 
   return (
     <div>
-      <Button color="link" onClick={homePage}>Home</Button>
+      <Button color="link" onClick={e => homePage(e)}>Home</Button>
       {
         create?<h3>Agregue un nuevo autor:</h3>:
         update?<h3>Edite este autor:</h3>:''

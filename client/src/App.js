@@ -31,7 +31,7 @@ function App() {
             }
           </Route>
           <Route exact path={`/create`}>
-            <AddForm/>
+            <AddForm datos={datos} setDatos={setDatos}/>
           </Route>
           <Route exact path={`/update/:id`}>
             <EditForm datos={datos} setDatos={setDatos}/>

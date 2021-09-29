@@ -8,8 +8,8 @@ import {Link} from "react-router-dom";
 import axios from 'axios';
 
 
-export default function Main({list,setList}) {
 
+export default function Main({list,setList}) {
 
   const deleteAuthor = id =>{
     axios.delete(`/api/authors/delete/${id}`)
@@ -56,7 +56,7 @@ export default function Main({list,setList}) {
         </Table> 
       </Row>
       <Link to={'/create'}>
-        <Button color="success">Agregar Autor</Button>{' '}
+        <Button  color="success">Agregar Autor</Button>{' '}
       </Link>
     </div>
   )
