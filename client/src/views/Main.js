@@ -6,17 +6,34 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { BiPencil } from "react-icons/bi";
 import {Link} from "react-router-dom";
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 
 
 export default function Main({list,setList}) {
 
   const deleteAuthor = id =>{
-    axios.delete(`/api/authors/delete/${id}`)
-        .then(res=>{
-          const newAuthorsList = list.filter((actualAuthor) => actualAuthor._id !== id)
-          setList(newAuthorsList);
-        })
+    Swal.fire({
+      title:'Alerta de eliminacion',
+      text:'¿Esta seguro de que quiere eliminar este autor?',
+      icon:'warning',
+      showCancelButton:true
+    }).then(result=>{
+      if(result.value){
+        axios.delete(`/api/authors/delete/${id}`)
+          .then(res=>{
+            const newAuthorsList = list.filter((actualAuthor) => actualAuthor._id !== id)
+            setList(newAuthorsList);
+          })
+          .catch(error => Swal.fire({
+            icon:'error',
+            title:'Error al eliminar',
+            text:'Se produjo un error al eliminar'
+          }))
+      }
+    }) 
+
+   
   }
 
   return (
