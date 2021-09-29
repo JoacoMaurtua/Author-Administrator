@@ -17,6 +17,8 @@ function App() {
           })
   },[]);
 
+  console.log(datos)
+
   return (
     <div className="App">
       <Router>
