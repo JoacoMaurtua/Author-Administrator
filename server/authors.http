@@ -15,12 +15,12 @@ Content-Type: application/json
 GET http://localhost:8000/api/authors/6153bb4d5b156a18cf3d01d2
 
 ###PUT AUTHOR
-PUT http://localhost:8000/api/authors/update/6153bba45b156a18cf3d01dd
+PUT http://localhost:8000/api/authors/update/6154857efc84279318facfe3
 Content-Type: application/json
 
 {
-  "name" : "Aristoteles"
+  "name" : "Joaquin Maurtua"
 }
 
 ###DELETE AUTHOR
-DELETE http://localhost:8000/api/authors/delete/6153bba45b156a18cf3d01dd
+DELETE http://localhost:8000/api/authors/delete/6153e8c824f583bf7f3a131b

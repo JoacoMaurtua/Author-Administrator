@@ -33,7 +33,7 @@ function App() {
           <Route exact path={`/create`}>
             <AddForm/>
           </Route>
-          <Route exact path={`/update`}>
+          <Route exact path={`/update/:id`}>
             <EditForm/>
           </Route>
         </Switch>

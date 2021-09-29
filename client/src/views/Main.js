@@ -28,7 +28,7 @@ export default function Main({list}) {
                         <td style={{textAlign: 'center'}}>
                             <Row>
                               <Col md={6}>
-                                <Link to={'/update'}>
+                                <Link to={`/update/${items._id}`}>
                                    <BiPencil/>
                                 </Link>  
                               </Col>

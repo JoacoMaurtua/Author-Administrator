@@ -12,7 +12,7 @@ export default function AuthorForm({create,update}) {
   }
 
   const [input,setInput] = useState({
-    AuthorName:''
+    name:''
   });
 
   const handleOnChange =e=>{
@@ -43,7 +43,7 @@ export default function AuthorForm({create,update}) {
   },[id]);
 
   const updateAuthor=()=>{
-    axios.put(`/api/authors/update/${id}`)
+    axios.put(`/api/authors/update/${id}`,input)
         .then(res => console.log(res))
   }
 
@@ -52,7 +52,9 @@ export default function AuthorForm({create,update}) {
     if(id){
       updateAuthor()
     }
-    else{addAuthors()};
+    else{
+      addAuthors()
+    }
   }
 
   return (
@@ -72,8 +74,8 @@ export default function AuthorForm({create,update}) {
                         <Input 
                           type="text" 
                           id="tipo"
-                          name="AuthorName"
-                          value={input.AuthorName}
+                          name="name"
+                          value={input.name}
                           onChange={handleOnChange}
                         /> 
                     </FormGroup>

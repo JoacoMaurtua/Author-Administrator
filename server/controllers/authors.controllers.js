@@ -1,7 +1,7 @@
 const Author = require('../models/authors.models');
 
 const findAuthors = (req,res) =>{
-  Author.find({})
+  Author.find({}).sort('name')
       .then(results => res.json({data:results}))
       .catch(error=>{
         res.json({error:error, message: 'Autores no encontrados'})
