@@ -1,0 +1,26 @@
+###GET AUTHORS
+
+GET http://localhost:8000/api/authors
+
+###POST AUTHOR
+POST http://localhost:8000/api/authors/create
+Content-Type: application/json
+
+{
+  "name" : "Homero"
+}
+
+###GET A SINGLE AUTHOR
+
+GET http://localhost:8000/api/authors/6153bb4d5b156a18cf3d01d2
+
+###PUT AUTHOR
+PUT http://localhost:8000/api/authors/update/6153bba45b156a18cf3d01dd
+Content-Type: application/json
+
+{
+  "name" : "Aristoteles"
+}
+
+###DELETE AUTHOR
+DELETE http://localhost:8000/api/authors/delete/6153bba45b156a18cf3d01dd

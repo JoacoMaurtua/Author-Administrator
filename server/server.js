@@ -14,9 +14,8 @@ const mongodb = require('./config/mongodb.config');
 mongodb();
 
 
-
 //Rutas
-
+app.use('/api',require('./routes/authors.routes'));
 
 
 
