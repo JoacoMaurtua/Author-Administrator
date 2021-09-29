@@ -28,7 +28,9 @@ export default function Main({list}) {
                         <td style={{textAlign: 'center'}}>
                             <Row>
                               <Col md={6}>
-                                  <BiPencil/>
+                                <Link to={'/update'}>
+                                   <BiPencil/>
+                                </Link>  
                               </Col>
                               <Col md={6}>
                                   <BsFillTrashFill/>

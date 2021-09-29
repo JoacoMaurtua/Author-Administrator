@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import Main from './views/Main';
 import AddForm from './views/AddForm';
+import EditForm from './views/EditForm';
 
 function App() {
 
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <Route exact path={`/create`}>
             <AddForm/>
+          </Route>
+          <Route exact path={`/update`}>
+            <EditForm/>
           </Route>
         </Switch>
       </Router>
