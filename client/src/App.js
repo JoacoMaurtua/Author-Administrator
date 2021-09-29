@@ -3,6 +3,7 @@ import React, {useState,useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import Main from './views/Main';
+import AddForm from './views/AddForm';
 
 function App() {
 
@@ -27,6 +28,9 @@ function App() {
             {
               loaded?<Main list={datos} setList={setDatos}/>:''
             }
+          </Route>
+          <Route exact path={`/create`}>
+            <AddForm/>
           </Route>
         </Switch>
       </Router>
