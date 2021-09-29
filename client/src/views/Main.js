@@ -4,6 +4,7 @@ import {Row,Col,Table,Button} from 'reactstrap';
 //import axios from 'axios';
 import { BsFillTrashFill } from "react-icons/bs";
 import { BiPencil } from "react-icons/bi";
+import {Link} from "react-router-dom";
 
 
 export default function Main({list}) {
@@ -23,7 +24,7 @@ export default function Main({list}) {
             <tbody>
                 {list&&list.map((items, index) => (
                     <tr key={index}>
-                        <td style={{textAlign: 'center'}}>{items.name}</td>
+                        <td style={{textAlign: 'center'}}>{items.AuthorName || items.name}</td>
                         <td style={{textAlign: 'center'}}>
                             <Row>
                               <Col md={6}>
@@ -39,7 +40,9 @@ export default function Main({list}) {
             </tbody>
         </Table> 
       </Row>
-      <Button color="success">Agregar Autor</Button>{' '}
+      <Link to={'/create'}>
+        <Button color="success">Agregar Autor</Button>{' '}
+      </Link>
     </div>
   )
 }
