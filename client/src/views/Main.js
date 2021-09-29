@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 
 export default function Main({list,setList}) {
 
+  //ALERTA DE ELIMINACION
   const deleteAuthor = id =>{
     Swal.fire({
       title:'Alerta de eliminacion',

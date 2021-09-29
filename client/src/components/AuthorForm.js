@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Button, Card, CardBody, CardHeader, Form, FormGroup, Input, Label,Row,Col } from 'reactstrap';
 import {useHistory,useParams} from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export default function AuthorForm({create,update,datos,setDatos}) {
   const history = useHistory();
@@ -28,6 +29,11 @@ export default function AuthorForm({create,update,datos,setDatos}) {
          .then(res=>{
            if(res.data.data){
              setDatos(datos.concat([res.data.data]));
+             Swal.fire({
+                icon:'success',
+                title:'Autor agregado!',
+                text: "Se agrego un autor correctamente"
+             })
              homePage(e);
            }else{
              alert(res.data.error.message)
@@ -49,6 +55,11 @@ export default function AuthorForm({create,update,datos,setDatos}) {
           const index = datos.findIndex(result => result._id === id)    //encontrar indice del objeto
           datos.splice(index,1,input);
           setDatos(datos);
+          Swal.fire({
+            icon:'success',
+            title:'Autor editado!',
+            text: "Se edito un autor correctamente"
+         })
           homePage();
         })
   }
